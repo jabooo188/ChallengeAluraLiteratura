@@ -7,11 +7,10 @@ import java.util.Scanner;
 public class Principal {
     Scanner teclado = new Scanner(System.in);
     //ConsumoAPI consumoAPI = new ConsumoAPI();
-    String url = "https://gutendex.com/books/?search=Romeo%20and%20Juliet";
     //consumoAPI.obtenerDatos();
 
     public void menu (){
-        var opcion = 0;
+        var opcion = 1;
         while (opcion != 0){
             var menu = """
                     <---------------------------------------------------->
@@ -26,7 +25,9 @@ public class Principal {
                     
                     8) Salir
                     <---------------------------------------------------->
+         
                     """;
+            //System.out.println(menu);
         }
     }
 
