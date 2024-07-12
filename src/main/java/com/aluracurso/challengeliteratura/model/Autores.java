@@ -1,13 +1,40 @@
 package com.aluracurso.challengeliteratura.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
+@Table(name = "autores")
 public class Autores {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonProperty("name")
     private String nombre;
+
+    @JsonProperty("birth_year")
     private Integer fechaNacimiento;
+
+    @JsonProperty("death_year")
     private Integer fechaMuerte;
+
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Libro> libros;
+
+    public Autores(){}
+
+    public Autores(com.aluracurso.challengeliteratura.model.record.Autores autor) {
+        this.nombre = autor.nombre();
+        this.fechaNacimiento = autor.fechaNacimiento();
+        this.fechaMuerte = autor.fechaMuerte();
+    }
+
+    public Autores(Autores autores) {
+    }
 
     public Long getId() {
         return id;
@@ -47,5 +74,15 @@ public class Autores {
 
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", fechaMuerte=" + fechaMuerte +
+                ", libros=" + libros;
     }
 }

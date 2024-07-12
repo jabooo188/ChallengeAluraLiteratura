@@ -10,7 +10,7 @@ import java.util.List;
 public record DatosLibro(
         @JsonAlias("id") Long libroID,
         @JsonAlias("title")String titulo,
-        @JsonAlias("authors")List<Autores> autores,
+        @JsonAlias("authors")List<Autores> autor,
         @JsonAlias("subjects")List<String> generos,
         @JsonAlias("languages")List<String> idiomas
 
